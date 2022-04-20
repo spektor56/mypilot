@@ -166,10 +166,19 @@ class CarInterface(CarInterfaceBase):
         # stock request output values:    0x0000, 0x0500, 0x0A15, 0x0E6D, 0x1100, 0x1200, 0x129A, 0x134D, 0x1400
         # modified request output values: 0x0000, 0x0500, 0x0A15, 0x0E6D, 0x1100, 0x1200, 0x1ACD, 0x239A, 0x2800
         ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 2560, 10000], [0, 2560, 3840]]
-        ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.21], [0.07]]
       else:
         ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 3840], [0, 3840]]
-        ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.64], [0.192]]
+
+      max_torque = 3.33 if eps_modified else 1.67
+      friction = 0.046 if eps_modified else 0.09
+
+      ret.lateralTuning.init('torque')
+      ret.lateralTuning.torque.useSteeringAngle = True
+      ret.lateralTuning.torque.kp = 2.0 / max_torque
+      ret.lateralTuning.torque.kf = 1.0 / max_torque
+      ret.lateralTuning.torque.ki = 0.5 / max_torque
+      ret.lateralTuning.torque.friction = friction
+
       tire_stiffness_factor = 0.677
       ret.wheelSpeedFactor = 1.025
 
