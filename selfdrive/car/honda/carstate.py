@@ -87,6 +87,7 @@ def get_can_signals(CP, gearbox_msg, main_on_sig_msg):
       signals += [
         ("CRUISE_CONTROL_LABEL", "ACC_HUD"),
         ("CRUISE_SPEED", "ACC_HUD"),
+        ("HUD_LEAD", "ACC_HUD"),
         ("ACCEL_COMMAND", "ACC_CONTROL"),
         ("AEB_STATUS", "ACC_CONTROL"),
       ]
@@ -202,6 +203,8 @@ class CarState(CarStateBase):
 
     if self.CP.openpilotLongitudinalControl:
       self.brake_error = cp.vl["STANDSTILL"]["BRAKE_ERROR_1"] or cp.vl["STANDSTILL"]["BRAKE_ERROR_2"]
+    else:
+      ret.hudLead = int(cp.vl["ACC_HUD"]["HUD_LEAD"])
     ret.espDisabled = cp.vl["VSA_STATUS"]["ESP_DISABLED"] != 0
 
     ret.wheelSpeeds = self.get_wheel_speeds(

@@ -118,6 +118,9 @@ class CarController:
     self.gas = 0.0
     self.brake = 0.0
 
+    self.prev_lead_distance = -1.
+    self.resume_from_standstill = False
+
   def update(self, CC, CS):
     actuators = CC.actuators
     hud_control = CC.hudControl
@@ -208,12 +211,30 @@ class CarController:
       if self.frame % 2 == 0:
         idx = self.frame // 2
         can_sends.append(hondacan.create_bosch_supplemental_1(self.packer, self.CP.carFingerprint, idx))
+
+      if not CS.out.cruiseState.standstill:
+        self.resume_from_standstill = False
+        self.prev_lead_distance = -1.
+
       # If using stock ACC, spam cancel command to kill gas when OP disengages.
       if pcm_cancel_cmd:
         can_sends.append(hondacan.spam_buttons_command(self.packer, CruiseButtons.CANCEL, idx, self.CP.carFingerprint))
       elif CS.out.cruiseState.standstill:
-        can_sends.append(hondacan.spam_buttons_command(self.packer, CruiseButtons.RES_ACCEL, idx, self.CP.carFingerprint))
+        resume_from_model = False
+        if not self.resume_from_standstill:
+          if CS.out.hudLead != 2:
+            self.resume_from_standstill = True
+          elif hud_control.leadDistance >= 0 and hud_control.leadProb > 0.5:
+            if (self.prev_lead_distance == -1.) or (hud_control.leadDistance < self.prev_lead_distance):
+              self.prev_lead_distance = hud_control.leadDistance
 
+            if(hud_control.leadDistance > (self.prev_lead_distance + 0.75)):
+              resume_from_model = True
+          else:
+            resume_from_model = True
+
+        if self.resume_from_standstill or resume_from_model:
+          can_sends.append(hondacan.spam_buttons_command(self.packer, CruiseButtons.RES_ACCEL, idx, self.CP.carFingerprint))
     else:
       # Send gas and brake commands.
       if self.frame % 2 == 0:
