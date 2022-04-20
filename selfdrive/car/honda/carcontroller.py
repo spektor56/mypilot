@@ -233,7 +233,14 @@ class CarController:
           else:
             resume_from_model = True
 
+        if self.resume_from_standstill:
+          print("Spamming RESUME Press")
+        if resume_from_model:
+          print("Resuming from Model")
+
         if self.resume_from_standstill or resume_from_model:
+          print("Spamming RESUME Press")
+          CC.resumeSpam = True
           can_sends.append(hondacan.spam_buttons_command(self.packer, CruiseButtons.RES_ACCEL, idx, self.CP.carFingerprint))
     else:
       # Send gas and brake commands.

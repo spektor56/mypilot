@@ -597,6 +597,7 @@ class Controls:
     long_plan = self.sm['longitudinalPlan']
 
     CC = car.CarControl.new_message()
+    CC.resumeSpam = False
     CC.enabled = self.enabled
     # Check which actuators can be enabled
     #TODO fix for cruiseState standstill
