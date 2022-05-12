@@ -681,18 +681,18 @@ EVENTS: Dict[int, Dict[str, Union[Alert, AlertCallbackType]]] = {
     ET.SOFT_DISABLE: user_soft_disable_alert("Gear not D"),
     ET.NO_ENTRY: NoEntryAlert("Gear not D"),
   },
-
+  
   EventName.silentWrongGear: {
     ET.SOFT_DISABLE: Alert(
       "Gear not D",
       "openpilot Unavailable",
-      AlertStatus.normal, AlertSize.mid,
-      Priority.LOW, VisualAlert.none, AudibleAlert.none, 0., 2., 3.),
+      AlertStatus.userPrompt, AlertSize.full,
+      Priority.MID, VisualAlert.steerRequired, AudibleAlert.none, 2., 0., 0.),
     ET.NO_ENTRY: Alert(
       "Gear not D",
       "openpilot Unavailable",
       AlertStatus.normal, AlertSize.mid,
-      Priority.LOW, VisualAlert.none, AudibleAlert.none, 0., 2., 3.),
+      Priority.LOW, VisualAlert.none, AudibleAlert.none, 3., 0., 0.),
   },
 
   # This alert is thrown when the calibration angles are outside of the acceptable range.
