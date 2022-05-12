@@ -63,7 +63,7 @@ const LogCameraInfo cameras_logged[] = {
     .fps = MAIN_FPS,
     .bitrate = MAIN_BITRATE,
     .is_h265 = true,
-    .has_qcamera = true,
+    .has_qcamera = false,
     .trigger_rotate = true,
     .enable = true,
     .record = true,
@@ -77,7 +77,7 @@ const LogCameraInfo cameras_logged[] = {
     .is_h265 = true,
     .has_qcamera = false,
     .trigger_rotate = Hardware::TICI(),
-    .enable = true,
+    .enable = Params().getBool("RecordFront"),
     .record = Params().getBool("RecordFront"),
   },
   {
