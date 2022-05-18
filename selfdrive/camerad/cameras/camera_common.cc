@@ -23,10 +23,8 @@
 #elif QCOM2
 #include "CL/cl_ext_qcom.h"
 #include "selfdrive/camerad/cameras/camera_qcom2.h"
-#elif WEBCAM
-#include "selfdrive/camerad/cameras/camera_webcam.h"
 #else
-#include "selfdrive/camerad/cameras/camera_replay.h"
+#include "selfdrive/camerad/test/camera_test.h"
 #endif
 
 ExitHandler do_exit;
