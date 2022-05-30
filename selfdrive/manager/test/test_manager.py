@@ -50,7 +50,7 @@ class TestManager(unittest.TestCase):
       self.assertTrue(state.running, f"{p} not running")
 
       exit_code = managed_processes[p].stop(retry=False)
-      if (TICI and p in ['ui', 'navd']) or (EON and p == 'logcatd'):
+      if (TICI and p in ['ui',]) or (EON and p == 'logcatd'):
         # TODO: make Qt UI exit gracefully
         continue
 
