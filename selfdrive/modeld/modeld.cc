@@ -175,7 +175,7 @@ int main(int argc, char **argv) {
     assert(ret == 0);
   }
 
-  bool main_wide_camera = Hardware::TICI() ? Params().getBool("EnableWideCamera") : false;
+  bool main_wide_camera = Hardware::TICI() ? Params().getBool("WideCameraOnly") : false;
   bool use_extra_client = Hardware::TICI() && !main_wide_camera;
 
   // cl init
