@@ -20,6 +20,7 @@ from common.realtime import set_realtime_priority
 from common.transformations.model import model_height
 from common.transformations.camera import get_view_frame_from_road_frame
 from common.transformations.orientation import rot_from_euler, euler_from_rot
+from system.hardware import TICI
 from system.swaglog import cloudlog
 
 MIN_SPEED_FILTER = 15 * CV.MPH_TO_MS
@@ -67,7 +68,7 @@ class Calibrator:
     # Read saved calibration
     params = Params()
     calibration_params = params.get("CalibrationParams")
-    self.wide_camera = params.get_bool('WideCameraOnly')
+    self.wide_camera = TICI and params.get_bool('WideCameraOnly')
     rpy_init = RPY_INIT
     valid_blocks = 0
 

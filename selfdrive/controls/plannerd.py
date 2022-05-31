@@ -18,7 +18,7 @@ def plannerd_thread(sm=None, pm=None):
   cloudlog.info("plannerd got CarParams: %s", CP.carName)
 
   use_lanelines = False
-  wide_camera = params.get_bool('WideCameraOnly')
+  wide_camera = params.get_bool('WideCameraOnly') if TICI else False
 
   cloudlog.event("e2e mode", on=use_lanelines)
 
