@@ -13,6 +13,7 @@
 #include "selfdrive/camerad/imgproc/utils.h"
 #include "common/clutil.h"
 #include "common/modeldata.h"
+#include "common/params.h"
 #include "common/swaglog.h"
 #include "common/util.h"
 #include "selfdrive/hardware/hw.h"
