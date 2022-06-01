@@ -19,8 +19,8 @@ extern "C" {
 #include <libavutil/imgutils.h>
 }
 
-#include "selfdrive/common/swaglog.h"
-#include "selfdrive/common/util.h"
+#include "common/swaglog.h"
+#include "common/util.h"
 
 RawLogger::RawLogger(const char* filename, CameraType type, int in_width, int in_height, int fps,
                      int bitrate, bool h265, int out_width, int out_height, bool write)
