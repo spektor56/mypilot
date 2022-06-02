@@ -6,6 +6,14 @@ cameras = []
 if arch == "aarch64":
   libs += ['gsl', 'CB', 'adreno_utils', 'EGL', 'GLESv3', 'cutils', 'ui']
   cameras = ['cameras/camera_qcom.cc']
+
+  env.Program('camerad', [
+    'main.cc',
+    'cameras/camera_common.cc',
+    'transforms/rgb_to_yuv.cc',
+    'imgproc/utils.cc',
+    cameras,
+  ], LIBS=libs)
 elif arch == "larch64":
   libs += ['atomic']
   cameras = ['cameras/camera_qcom2.cc']
