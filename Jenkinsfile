@@ -222,15 +222,7 @@ pipeline {
               }
             }
           }
-
-          post {
-            always {
-              cleanWs()
-            }
-          }
-
         }
-
       }
     }
   }
