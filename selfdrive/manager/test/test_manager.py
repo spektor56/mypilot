@@ -8,6 +8,7 @@ import selfdrive.manager.manager as manager
 from system.hardware import EON, TICI, HARDWARE
 from selfdrive.manager.process import DaemonProcess
 from selfdrive.manager.process_config import managed_processes
+from system.hardware import AGNOS, HARDWARE
 
 os.environ['FAKEUPLOAD'] = "1"
 
@@ -53,9 +54,6 @@ class TestManager(unittest.TestCase):
       if (TICI and p in ['ui',]) or (EON and p == 'logcatd'):
         # TODO: make Qt UI exit gracefully
         continue
-
-      # Make sure the process is actually dead
-      managed_processes[p].stop()
 
       # TODO: interrupted blocking read exits with 1 in cereal. use a more unique return code
       exit_codes = [0, 1]
