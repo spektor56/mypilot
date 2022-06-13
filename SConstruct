@@ -7,6 +7,8 @@ import platform
 import numpy as np
 
 TICI = os.path.isfile('/TICI')
+AGNOS = os.path.isfile('/AGNOS')
+
 Decider('MD5-timestamp')
 
 AddOption('--test',
