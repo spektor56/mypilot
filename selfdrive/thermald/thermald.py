@@ -229,7 +229,7 @@ def thermald_thread(end_event, hw_queue):
         else:
           fan_controller = EonFanController()
 
-    elif (sec_since_boot() - sm.rcv_time['pandaStates']/1e9) > DISCONNECT_TIMEOUT:
+    elif (sec_since_boot() - sm.rcv_time['pandaStates']) > DISCONNECT_TIMEOUT:
       if onroad_conditions["ignition"]:
         onroad_conditions["ignition"] = False
         cloudlog.error("panda timed out onroad")
