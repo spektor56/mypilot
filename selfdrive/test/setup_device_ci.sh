@@ -53,6 +53,8 @@ fi
 tee $CONTINUE_PATH << EOF
 #!/usr/bin/bash
 
+sudo abctl --set_success
+
 while true; do
   if [ -f /EON ]; then
     setprop persist.neos.ssh 1
