@@ -108,7 +108,7 @@ class TestLoggerd(unittest.TestCase):
     os.environ["LOGGERD_TEST"] = "1"
     Params().put("RecordFront", "1")
 
-    expected_files = {"rlog", "qlog", "qcamera.ts", "fcamera.hevc", "dcamera.hevc"}
+    expected_files = {"rlog", "fcamera.hevc", "dcamera.hevc"}
     streams = [(VisionStreamType.VISION_STREAM_ROAD, tici_f_frame_size if TICI else eon_f_frame_size, "roadCameraState"),
               (VisionStreamType.VISION_STREAM_DRIVER, tici_d_frame_size if TICI else eon_d_frame_size, "driverCameraState")]
     if TICI:
@@ -177,58 +177,6 @@ class TestLoggerd(unittest.TestCase):
         expected_val = open(path, "rb").read()
         bootlog_val = [e.value for e in boot.pstore.entries if e.key == fn][0]
         self.assertEqual(expected_val, bootlog_val)
-
-  def test_qlog(self):
-    qlog_services = [s for s in CEREAL_SERVICES if service_list[s].decimation is not None]
-    no_qlog_services = [s for s in CEREAL_SERVICES if service_list[s].decimation is None]
-
-    services = random.sample(qlog_services, random.randint(2, min(10, len(qlog_services)))) + \
-               random.sample(no_qlog_services, random.randint(2, min(10, len(no_qlog_services))))
-
-    pm = messaging.PubMaster(services)
-
-    # sleep enough for the first poll to time out
-    # TOOD: fix loggerd bug dropping the msgs from the first poll
-    managed_processes["loggerd"].start()
-    for s in services:
-      while not pm.all_readers_updated(s):
-        time.sleep(0.1)
-
-    sent_msgs = defaultdict(list)
-    for _ in range(random.randint(2, 10) * 100):
-      for s in services:
-        try:
-          m = messaging.new_message(s)
-        except Exception:
-          m = messaging.new_message(s, random.randint(2, 10))
-        pm.send(s, m)
-        sent_msgs[s].append(m)
-      time.sleep(0.01)
-
-    time.sleep(1)
-    managed_processes["loggerd"].stop()
-
-    qlog_path = os.path.join(self._get_latest_log_dir(), "qlog")
-    lr = list(LogReader(qlog_path))
-
-    # check initData and sentinel
-    self._check_init_data(lr)
-    self._check_sentinel(lr, True)
-
-    recv_msgs = defaultdict(list)
-    for m in lr:
-      recv_msgs[m.which()].append(m)
-
-    for s, msgs in sent_msgs.items():
-      recv_cnt = len(recv_msgs[s])
-
-      if s in no_qlog_services:
-        # check services with no specific decimation aren't in qlog
-        self.assertEqual(recv_cnt, 0, f"got {recv_cnt} {s} msgs in qlog")
-      else:
-        # check logged message count matches decimation
-        expected_cnt = (len(msgs) - 1) // service_list[s].decimation + 1
-        self.assertEqual(recv_cnt, expected_cnt, f"expected {expected_cnt} msgs for {s}, got {recv_cnt}")
 
   def test_rlog(self):
     services = random.sample(CEREAL_SERVICES, random.randint(5, 10))
