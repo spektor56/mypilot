@@ -239,6 +239,8 @@ void CameraViewWidget::paintGL() {
   glViewport(0, 0, width(), height());
   glBindVertexArray(frame_vao);
 
+  VisionBuf *frame = frames[frame_idx].second;
+
   glUseProgram(program->programId());
   uint8_t *address[3] = {frame->y, frame->u, frame->v};
   for (int i = 0; i < 3; ++i) {
