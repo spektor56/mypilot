@@ -62,6 +62,8 @@ release/*
 
 tools/lib/*
 tools/joystick/*
+tools/replay/*.cc
+tools/replay/*.h
 
 installer/updater/updater
 
@@ -303,6 +305,7 @@ selfdrive/ui/soundd/*.cc
 selfdrive/ui/soundd/*.h
 selfdrive/ui/soundd/soundd
 selfdrive/ui/soundd/.gitignore
+selfdrive/ui/translations/*
 
 selfdrive/ui/qt/*.cc
 selfdrive/ui/qt/*.h
@@ -313,10 +316,6 @@ selfdrive/ui/qt/widgets/*.cc
 selfdrive/ui/qt/widgets/*.h
 selfdrive/ui/qt/spinner_aarch64
 selfdrive/ui/qt/text_aarch64
-
-selfdrive/ui/replay/*.cc
-selfdrive/ui/replay/*.h
-
 selfdrive/ui/qt/maps/*.cc
 selfdrive/ui/qt/maps/*.h
 
