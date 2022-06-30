@@ -61,8 +61,8 @@ release/*
 
 tools/lib/*
 tools/joystick/*
-tools/replay/*.cc
-tools/replay/*.h
+selfdrive/ui/replay/*.cc
+selfdrive/ui/replay/*.h
 
 installer/updater/updater
 
