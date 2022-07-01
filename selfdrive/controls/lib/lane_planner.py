@@ -4,7 +4,7 @@ from common.filter_simple import FirstOrderFilter
 from common.numpy_fast import interp
 from common.realtime import DT_MDL
 from system.hardware import EON, TICI
-from selfdrive.swaglog import cloudlog
+from system.swaglog import cloudlog
 
 
 TRAJECTORY_SIZE = 33

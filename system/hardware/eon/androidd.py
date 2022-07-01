@@ -6,7 +6,7 @@ from typing import Optional
 
 import cereal.messaging as messaging
 from common.realtime import set_core_affinity, set_realtime_priority
-from selfdrive.swaglog import cloudlog
+from system.swaglog import cloudlog
 
 
 MAX_MODEM_CRASHES = 3

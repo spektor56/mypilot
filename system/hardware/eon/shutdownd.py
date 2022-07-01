@@ -5,7 +5,7 @@ import datetime
 
 from common.params import Params
 from system.hardware.eon.hardware import getprop
-from selfdrive.swaglog import cloudlog
+from system.swaglog import cloudlog
 
 def main():
   prev = b""

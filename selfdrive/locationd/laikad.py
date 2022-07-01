@@ -16,8 +16,7 @@ from laika.raw_gnss import GNSSMeasurement, calc_pos_fix, correct_measurements, 
 from selfdrive.locationd.models.constants import GENERATED_DIR, ObservationKind
 from selfdrive.locationd.models.gnss_kf import GNSSKalman
 from selfdrive.locationd.models.gnss_kf import States as GStates
-import common.transformations.coordinates as coord
-from selfdrive.swaglog import cloudlog
+from system.swaglog import cloudlog
 
 MAX_TIME_GAP = 10
 
