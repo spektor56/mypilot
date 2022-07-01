@@ -61,14 +61,14 @@ def unbzip_frames(url):
 def init_kernels(frame_offset=0):
   ctx = cl.create_some_context(interactive=False)
 
-  with open(os.path.join(BASEDIR, 'selfdrive/camerad/cameras/real_debayer.cl')) as f:
+  with open(os.path.join(BASEDIR, 'system/camerad/cameras/real_debayer.cl')) as f:
     build_args = ' -cl-fast-relaxed-math -cl-denorms-are-zero -cl-single-precision-constant' + \
       f' -DFRAME_STRIDE={FRAME_STRIDE} -DRGB_WIDTH={FRAME_WIDTH} -DRGB_HEIGHT={FRAME_HEIGHT} -DFRAME_OFFSET={frame_offset} -DCAM_NUM=0'
     if PC:
       build_args += ' -DHALF_AS_FLOAT=1 -cl-std=CL2.0'
     debayer_prg = cl.Program(ctx, f.read()).build(options=build_args)
 
-  with open(os.path.join(BASEDIR, 'selfdrive/camerad/transforms/rgb_to_yuv.cl')) as f:
+  with open(os.path.join(BASEDIR, 'system/camerad/transforms/rgb_to_yuv.cl')) as f:
     build_args = f' -cl-fast-relaxed-math -cl-denorms-are-zero -DWIDTH={FRAME_WIDTH} -DHEIGHT={FRAME_HEIGHT}' + \
       f' -DUV_WIDTH={UV_WIDTH} -DUV_HEIGHT={UV_HEIGHT} -DRGB_STRIDE={FRAME_WIDTH*3}' + \
       f' -DRGB_SIZE={FRAME_WIDTH*FRAME_HEIGHT}'

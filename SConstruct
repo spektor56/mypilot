@@ -101,7 +101,7 @@ if arch == "aarch64" or arch == "larch64":
       "/usr/lib/aarch64-linux-gnu"
     ]
     cpppath += [
-      "#selfdrive/camerad/include",
+      "#system/camerad/include",
     ]
     cflags = ["-DQCOM2", "-mcpu=cortex-a57"]
     cxxflags = ["-DQCOM2", "-mcpu=cortex-a57"]
@@ -424,7 +424,7 @@ SConscript(['third_party/SConscript'])
 SConscript(['common/kalman/SConscript'])
 SConscript(['common/transformations/SConscript'])
 
-SConscript(['selfdrive/camerad/SConscript'])
+SConscript(['system/camerad/SConscript'])
 SConscript(['selfdrive/modeld/SConscript'])
 
 SConscript(['selfdrive/controls/lib/cluster/SConscript'])

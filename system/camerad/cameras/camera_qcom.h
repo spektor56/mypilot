@@ -6,12 +6,12 @@
 
 #include "cereal/messaging/messaging.h"
 #include "cereal/visionipc/visionbuf.h"
-#include "selfdrive/camerad/cameras/camera_common.h"
-#include "selfdrive/camerad/imgproc/utils.h"
-#include "selfdrive/camerad/include/msm_cam_sensor.h"
-#include "selfdrive/camerad/include/msmb_camera.h"
-#include "selfdrive/camerad/include/msmb_isp.h"
-#include "selfdrive/camerad/include/msmb_ispif.h"
+#include "system/camerad/cameras/camera_common.h"
+#include "system/camerad/imgproc/utils.h"
+#include "system/camerad/include/msm_cam_sensor.h"
+#include "system/camerad/include/msmb_camera.h"
+#include "system/camerad/include/msmb_isp.h"
+#include "system/camerad/include/msmb_ispif.h"
 #include "selfdrive/common/mat.h"
 #include "selfdrive/common/util.h"
 
