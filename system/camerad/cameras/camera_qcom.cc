@@ -1,4 +1,4 @@
-#include "selfdrive/camerad/cameras/camera_qcom.h"
+#include "system/camerad/cameras/camera_qcom.h"
 
 #include <fcntl.h>
 #include <poll.h>
@@ -14,11 +14,11 @@
 #include <cutils/properties.h>
 #include <linux/media.h>
 
-#include "selfdrive/camerad/cameras/sensor_i2c.h"
-#include "selfdrive/camerad/include/msm_cam_sensor.h"
-#include "selfdrive/camerad/include/msmb_camera.h"
-#include "selfdrive/camerad/include/msmb_isp.h"
-#include "selfdrive/camerad/include/msmb_ispif.h"
+#include "system/camerad/cameras/sensor_i2c.h"
+#include "system/camerad/include/msm_cam_sensor.h"
+#include "system/camerad/include/msmb_camera.h"
+#include "system/camerad/include/msmb_isp.h"
+#include "system/camerad/include/msmb_ispif.h"
 #include "selfdrive/common/clutil.h"
 #include "selfdrive/common/params.h"
 #include "selfdrive/common/swaglog.h"
