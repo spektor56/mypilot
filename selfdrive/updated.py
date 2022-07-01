@@ -37,7 +37,7 @@ from typing import List, Tuple, Optional
 from common.basedir import BASEDIR
 from common.markdown import parse_markdown
 from common.params import Params
-from selfdrive.hardware import EON, TICI, HARDWARE
+from system.hardware import EON, TICI, HARDWARE
 from selfdrive.swaglog import cloudlog
 from selfdrive.controls.lib.alertmanager import set_offroad_alert
 from selfdrive.version import is_tested_branch
@@ -274,7 +274,7 @@ def finalize_update(wait_helper: WaitTimeHelper) -> None:
 
 
 def handle_agnos_update(wait_helper: WaitTimeHelper) -> None:
-  from selfdrive.hardware.tici.agnos import flash_agnos_update, get_target_slot_number
+  from system.hardware.tici.agnos import flash_agnos_update, get_target_slot_number
 
   cur_version = HARDWARE.get_os_version()
   updated_version = run(["bash", "-c", r"unset AGNOS_VERSION && source launch_env.sh && \
@@ -290,14 +290,14 @@ def handle_agnos_update(wait_helper: WaitTimeHelper) -> None:
   cloudlog.info(f"Beginning background installation for AGNOS {updated_version}")
   set_offroad_alert("Offroad_NeosUpdate", True)
 
-  manifest_path = os.path.join(OVERLAY_MERGED, "selfdrive/hardware/tici/agnos.json")
+  manifest_path = os.path.join(OVERLAY_MERGED, "system/hardware/tici/agnos.json")
   target_slot_number = get_target_slot_number()
   flash_agnos_update(manifest_path, target_slot_number, cloudlog)
   set_offroad_alert("Offroad_NeosUpdate", False)
 
 
 def handle_neos_update(wait_helper: WaitTimeHelper) -> None:
-  from selfdrive.hardware.eon.neos import download_neos_update
+  from system.hardware.eon.neos import download_neos_update
 
   cur_neos = HARDWARE.get_os_version()
   updated_neos = run(["bash", "-c", r"unset REQUIRED_NEOS_VERSION && source launch_env.sh && \
@@ -310,7 +310,7 @@ def handle_neos_update(wait_helper: WaitTimeHelper) -> None:
   cloudlog.info(f"Beginning background download for NEOS {updated_neos}")
   set_offroad_alert("Offroad_NeosUpdate", True)
 
-  update_manifest = os.path.join(OVERLAY_MERGED, "selfdrive/hardware/eon/neos.json")
+  update_manifest = os.path.join(OVERLAY_MERGED, "system/hardware/eon/neos.json")
 
   neos_downloaded = False
   start_time = time.monotonic()

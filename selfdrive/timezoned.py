@@ -9,7 +9,7 @@ import requests
 from timezonefinder import TimezoneFinder
 
 from common.params import Params
-from selfdrive.hardware import TICI
+from system.hardware import TICI
 from selfdrive.swaglog import cloudlog
 
 

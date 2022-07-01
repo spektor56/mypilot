@@ -2,7 +2,7 @@ import os
 
 from cereal import car
 from common.params import Params
-from selfdrive.hardware import EON, TICI, PC
+from system.hardware import EON, TICI, PC
 from selfdrive.manager.process import PythonProcess, NativeProcess, DaemonProcess
 
 WEBCAM = os.getenv("USE_WEBCAM") is not None
@@ -52,8 +52,8 @@ procs = [
 
   # EON only
   PythonProcess("rtshield", "selfdrive.rtshield", enabled=EON),
-  PythonProcess("shutdownd", "selfdrive.hardware.eon.shutdownd", enabled=EON),
-  PythonProcess("androidd", "selfdrive.hardware.eon.androidd", enabled=EON, offroad=True),
+  PythonProcess("shutdownd", "system.hardware.eon.shutdownd", enabled=EON),
+  PythonProcess("androidd", "system.hardware.eon.androidd", enabled=EON, offroad=True),
   
   NativeProcess("bridge", "cereal/messaging", ["./bridge"], onroad=False, callback=notcar),
   PythonProcess("webjoystick", "tools.joystick.web", onroad=False, callback=notcar),

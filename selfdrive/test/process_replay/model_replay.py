@@ -12,7 +12,7 @@ from common.spinner import Spinner
 from common.timeout import Timeout
 from common.transformations.camera import get_view_frame_from_road_frame, eon_f_frame_size, tici_f_frame_size, \
                                           eon_d_frame_size, tici_d_frame_size
-from selfdrive.hardware import PC, TICI
+from system.hardware import PC, TICI
 from selfdrive.manager.process_config import managed_processes
 from selfdrive.test.openpilotci import BASE_URL, get_url
 from selfdrive.test.process_replay.compare_logs import compare_logs, save_log

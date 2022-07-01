@@ -1,13 +1,13 @@
 #pragma once
 
-#include "selfdrive/hardware/base.h"
+#include "system/hardware/base.h"
 #include "common/util.h"
 
 #ifdef QCOM
-#include "selfdrive/hardware/eon/hardware.h"
+#include "system/hardware/eon/hardware.h"
 #define Hardware HardwareEon
 #elif QCOM2
-#include "selfdrive/hardware/tici/hardware.h"
+#include "system/hardware/tici/hardware.h"
 #define Hardware HardwareTici
 #else
 class HardwarePC : public HardwareNone {

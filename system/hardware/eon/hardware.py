@@ -8,7 +8,7 @@ import subprocess
 from typing import List, Union
 
 from cereal import log
-from selfdrive.hardware.base import HardwareBase, ThermalConfig
+from system.hardware.base import HardwareBase, ThermalConfig
 
 try:
   from common.params import Params

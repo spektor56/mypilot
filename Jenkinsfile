@@ -136,7 +136,7 @@ pipeline {
                       ["test loggerd", "python selfdrive/loggerd/tests/test_loggerd.py"],
                       ["test encoder", "python selfdrive/loggerd/tests/test_encoder.py"],
                       ["test logcatd", "python selfdrive/logcatd/tests/test_logcatd_android.py"],
-                      ["test updater", "python selfdrive/hardware/eon/test_neos_updater.py"],
+                      ["test updater", "python system/hardware/eon/test_neos_updater.py"],
                     ])
                   }
                 }
@@ -181,7 +181,7 @@ pipeline {
                   steps {
                     phone_steps("tici2", [
                       ["build", "cd selfdrive/manager && ./build.py"],
-                      ["test power draw", "python selfdrive/hardware/tici/test_power_draw.py"],
+                      ["test power draw", "python system/hardware/tici/test_power_draw.py"],
                       ["test boardd loopback", "python selfdrive/boardd/tests/test_boardd_loopback.py"],
                       ["test loggerd", "python selfdrive/loggerd/tests/test_loggerd.py"],
                       ["test encoder", "LD_LIBRARY_PATH=/usr/local/lib python selfdrive/loggerd/tests/test_encoder.py"],

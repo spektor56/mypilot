@@ -4,7 +4,7 @@ import time
 import datetime
 
 from common.params import Params
-from selfdrive.hardware.eon.hardware import getprop
+from system.hardware.eon.hardware import getprop
 from selfdrive.swaglog import cloudlog
 
 def main():
