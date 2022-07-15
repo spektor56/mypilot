@@ -17,6 +17,12 @@ fi
 
 docker pull carlasim/carla:0.9.13
 
+EXTRA_ARGS="-it"
+if [[ "$DETACH" ]]; then
+  EXTRA_ARGS="-d"
+fi
+
+docker kill carla_sim || true
 docker run \
   --name carla_sim \
   --rm \
