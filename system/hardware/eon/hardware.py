@@ -381,6 +381,9 @@ class Android(HardwareBase):
       # We don't have a good direct way to measure this if it's not "discharging"
       return None
 
+  def get_som_power_draw(self):
+    return 0
+
   def shutdown(self):
     os.system('LD_LIBRARY_PATH="" svc power shutdown')
 
