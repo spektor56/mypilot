@@ -203,13 +203,9 @@ void NvgWindow::updateState(const UIState &s) {
   float cur_speed = cs_alive ? std::max<float>(0.0, v_ego) : 0.0;
   cur_speed  *= s.scene.is_metric ? MS_TO_KPH : MS_TO_MPH;
 
-  auto speed_limit_sign = sm["navInstruction"].getNavInstruction().getSpeedLimitSign();
-  float speed_limit = nav_alive ? sm["navInstruction"].getNavInstruction().getSpeedLimit() : 0.0;
-  speed_limit *= (s.scene.is_metric ? MS_TO_KPH : MS_TO_MPH);
-
-  setProperty("speedLimit", speed_limit);
-  setProperty("has_us_speed_limit", nav_alive && speed_limit_sign == cereal::NavInstruction::SpeedLimitSign::MUTCD);
-  setProperty("has_eu_speed_limit", nav_alive && speed_limit_sign == cereal::NavInstruction::SpeedLimitSign::VIENNA);
+  setProperty("speedLimit", 0.0);
+  setProperty("has_us_speed_limit", false);
+  setProperty("has_eu_speed_limit", false);
 
   setProperty("is_cruise_set", cruise_set);
   setProperty("is_metric", s.scene.is_metric);
