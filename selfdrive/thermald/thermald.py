@@ -360,8 +360,12 @@ def thermald_thread(end_event, hw_queue):
     msg.deviceState.offroadPowerUsageUwh = power_monitor.get_power_used()
     msg.deviceState.carBatteryCapacityUwh = max(0, power_monitor.get_car_battery_capacity())
     current_power_draw = HARDWARE.get_current_power_draw()
-    statlog.sample("power_draw", current_power_draw)
-    msg.deviceState.powerDrawW = current_power_draw
+
+    if current_power_draw is not None:
+      statlog.sample("power_draw", current_power_draw)
+      msg.deviceState.powerDrawW = current_power_draw
+    else:
+      msg.deviceState.powerDrawW = 0
     
     som_power_draw = HARDWARE.get_som_power_draw()
     statlog.sample("som_power_draw", som_power_draw)
