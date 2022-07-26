@@ -21,9 +21,6 @@ int main(int argc, char *argv[]) {
     qCritical() << "Failed to load translation file:" << translation_file;
   }
 
-  QApplication a(argc, argv);
-  a.installTranslator(&translator);
-
   if (Hardware::EON()) {
     QSslConfiguration ssl = QSslConfiguration::defaultConfiguration();
     ssl.setCaCertificates(QSslCertificate::fromPath("/usr/etc/tls/cert.pem"));
