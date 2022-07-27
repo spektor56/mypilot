@@ -4,7 +4,7 @@ import math
 import os
 import time
 from collections import defaultdict
-from concurrent.futures import Future, ProcessPoolExecutor
+from concurrent.futures import Future, ThreadPoolExecutor
 from datetime import datetime
 from enum import IntEnum
 from typing import List, Optional
@@ -47,7 +47,7 @@ class Laikad:
     self.gnss_kf = GNSSKalman(GENERATED_DIR, cython=True)
 
     self.auto_fetch_orbits = auto_fetch_orbits
-    self.orbit_fetch_executor: Optional[ProcessPoolExecutor] = None
+    self.orbit_fetch_executor: Optional[ThreadPoolExecutor] = None
     self.orbit_fetch_future: Optional[Future] = None
 
     self.last_fetch_orbits_t = None
@@ -190,7 +190,7 @@ class Laikad:
       if block:  # Used for testing purposes
         ret = get_orbit_data(t, *astro_dog_vars)
       elif self.orbit_fetch_future is None:
-        self.orbit_fetch_executor = ProcessPoolExecutor(max_workers=1)
+        self.orbit_fetch_executor = ThreadPoolExecutor(max_workers=1)
         self.orbit_fetch_future = self.orbit_fetch_executor.submit(get_orbit_data, t, *astro_dog_vars)
       elif self.orbit_fetch_future.done():
         ret = self.orbit_fetch_future.result()
