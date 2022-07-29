@@ -371,6 +371,21 @@ class CarInterface(CarInterfaceBase):
         be.type = ButtonType.altButton3
       buttonEvents.append(be)
 
+    if self.CS.cruise_setting != self.CS.prev_cruise_setting:
+      be = car.CarState.ButtonEvent.new_message()
+      be.type = ButtonType.unknown
+      if self.CS.cruise_setting != 0:
+        be.pressed = True
+        but = self.CS.cruise_setting
+      else:
+        be.pressed = False
+        but = self.CS.prev_cruise_setting
+      if but == CruiseSetting.LKAS_BUTTON:
+        be.type = ButtonType.altButton1
+      # TODO: more buttons?
+      buttonEvents.append(be)
+    ret.buttonEvents = buttonEvents
+
     extraGears = []
     if not (self.CS.CP.openpilotLongitudinalControl or self.CS.CP.enableGasInterceptor):
       extraGears = [car.CarState.GearShifter.sport, car.CarState.GearShifter.low]
