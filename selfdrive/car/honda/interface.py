@@ -353,22 +353,23 @@ class CarInterface(CarInterfaceBase):
     buttonEvents = []
 
     if self.CS.cruise_buttons != self.CS.prev_cruise_buttons:
-      buttonEvents.append(create_button_event(self.CS.cruise_buttons, self.CS.prev_cruise_buttons, BUTTONS_DICT))
-
-    if self.CS.cruise_setting != self.CS.prev_cruise_setting:
       be = car.CarState.ButtonEvent.new_message()
       be.type = ButtonType.unknown
-      if self.CS.cruise_setting != 0:
+      if self.CS.cruise_buttons != 0:
         be.pressed = True
-        but = self.CS.cruise_setting
+        but = self.CS.cruise_buttons
       else:
         be.pressed = False
-        but = self.CS.prev_cruise_setting
-      if but == CruiseSetting.LKAS_BUTTON:
-        be.type = ButtonType.altButton1
-      # TODO: more buttons?
+        but = self.CS.prev_cruise_buttons
+      if but == CruiseButtons.RES_ACCEL:
+        be.type = ButtonType.accelCruise
+      elif but == CruiseButtons.DECEL_SET:
+        be.type = ButtonType.decelCruise
+      elif but == CruiseButtons.CANCEL:
+        be.type = ButtonType.cancel
+      elif but == CruiseButtons.MAIN:
+        be.type = ButtonType.altButton3
       buttonEvents.append(be)
-    ret.buttonEvents = buttonEvents
 
     extraGears = []
     if not (self.CS.CP.openpilotLongitudinalControl or self.CS.CP.enableGasInterceptor):
