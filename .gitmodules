@@ -6,7 +6,7 @@
 	url = https://github.com/spektor56/myopendbc.git
 [submodule "laika_repo"]
 	path = laika_repo
-	url = ../../commaai/laika.git
+	url = https://github.com/spektor56/mylaika.git
 [submodule "cereal"]
 	path = cereal
 	url = https://github.com/spektor56/mycereal.git
