@@ -244,7 +244,7 @@ class CarController:
     # Send dashboard UI commands.
     if self.frame % 10 == 0:
       idx = (self.frame // 10) % 4
-      hud = HUDData(int(pcm_accel), (int(round(hud_v_cruise)) if hud_car != 0 else 255), hud_control.leadVisible if CC.enabled and CS.out.cruiseState.enabled else 0,
+      hud = HUDData(int(pcm_accel), (int(round(hud_v_cruise)) if not(CC.enabled and CS.out.cruiseState.enabled) else 255), hud_control.leadVisible if CC.enabled and CS.out.cruiseState.enabled else 0,
                     hud_control.lanesVisible and CC.latActive, fcw_display, acc_alert, steer_required, CS.lkasEnabled and not CC.latActive)
       can_sends.extend(hondacan.create_ui_commands(self.packer, self.CP, CC.enabled, pcm_speed, hud, CS.is_metric, idx, CS.stock_hud))
 
