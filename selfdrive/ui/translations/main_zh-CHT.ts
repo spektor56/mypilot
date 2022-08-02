@@ -313,10 +313,6 @@
             <numerusform>需要至少 %n 個字元！</numerusform>
         </translation>
     </message>
-    <message>
-        <source>Need at least %1 characters!</source>
-        <translation type="vanished">需要至少 %1 個字元！</translation>
-    </message>
 </context>
 <context>
     <name>Installer</name>
@@ -661,21 +657,6 @@ location set</source>
         <translation>
             <numerusform>%n 天前</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>%1 minute%2 ago</source>
-        <translatorcomment>we don&apos;t need %2</translatorcomment>
-        <translation type="vanished">%1 分鐘前</translation>
-    </message>
-    <message>
-        <source>%1 hour%2 ago</source>
-        <translatorcomment>we don&apos;t need %2</translatorcomment>
-        <translation type="vanished">%1 小時前</translation>
-    </message>
-    <message>
-        <source>%1 day%2 ago</source>
-        <translatorcomment>we don&apos;t need %2</translatorcomment>
-        <translation type="vanished">%1 天前</translation>
     </message>
 </context>
 <context>
@@ -1193,16 +1174,6 @@ location set</source>
     </message>
     <message>
         <location filename="../qt/offroad/settings.cc" line="46"/>
-        <source>Enable Right-Hand Drive</source>
-        <translation>啟用右駕模式</translation>
-    </message>
-    <message>
-        <location filename="../qt/offroad/settings.cc" line="47"/>
-        <source>Allow openpilot to obey left-hand traffic conventions and perform driver monitoring on right driver seat.</source>
-        <translation>openpilot 將對右側駕駛進行監控 (但仍遵守靠左駕的交通慣例)。</translation>
-    </message>
-    <message>
-        <location filename="../qt/offroad/settings.cc" line="52"/>
         <source>Use Metric System</source>
         <translation>使用公制單位</translation>
     </message>

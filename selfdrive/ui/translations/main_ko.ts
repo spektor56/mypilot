@@ -313,10 +313,6 @@
             <numerusform></numerusform>
         </translation>
     </message>
-    <message>
-        <source>Need at least %1 characters!</source>
-        <translation type="vanished">최소 %1 자가 필요합니다!</translation>
-    </message>
 </context>
 <context>
     <name>Installer</name>
@@ -661,18 +657,6 @@ location set</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
-    </message>
-    <message>
-        <source>%1 minute%2 ago</source>
-        <translation type="vanished">%1 분전</translation>
-    </message>
-    <message>
-        <source>%1 hour%2 ago</source>
-        <translation type="vanished">%1 시간전</translation>
-    </message>
-    <message>
-        <source>%1 day%2 ago</source>
-        <translation type="vanished">%1 일전</translation>
     </message>
 </context>
 <context>
@@ -1190,16 +1174,6 @@ location set</source>
     </message>
     <message>
         <location filename="../qt/offroad/settings.cc" line="46"/>
-        <source>Enable Right-Hand Drive</source>
-        <translation>우측핸들 사용</translation>
-    </message>
-    <message>
-        <location filename="../qt/offroad/settings.cc" line="47"/>
-        <source>Allow openpilot to obey left-hand traffic conventions and perform driver monitoring on right driver seat.</source>
-        <translation>openpilot이 좌측 교통 규칙을 준수하고 우측 운전석에서 운전자 모니터링을 수행합니다.</translation>
-    </message>
-    <message>
-        <location filename="../qt/offroad/settings.cc" line="52"/>
         <source>Use Metric System</source>
         <translation>미터법 사용</translation>
     </message>

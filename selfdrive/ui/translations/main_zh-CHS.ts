@@ -313,10 +313,6 @@
             <numerusform>至少需要 %n 个字符！</numerusform>
         </translation>
     </message>
-    <message>
-        <source>Need at least %1 characters!</source>
-        <translation type="vanished">至少需要 %1 个字符！</translation>
-    </message>
 </context>
 <context>
     <name>Installer</name>
@@ -659,18 +655,6 @@ location set</source>
         <translation>
             <numerusform>%n 天前</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>%1 minute%2 ago</source>
-        <translation type="vanished">%1 分钟%2 前</translation>
-    </message>
-    <message>
-        <source>%1 hour%2 ago</source>
-        <translation type="vanished">%1 小时%2 前</translation>
-    </message>
-    <message>
-        <source>%1 day%2 ago</source>
-        <translation type="vanished">%1 天%2 前</translation>
     </message>
 </context>
 <context>
@@ -1188,16 +1172,6 @@ location set</source>
     </message>
     <message>
         <location filename="../qt/offroad/settings.cc" line="46"/>
-        <source>Enable Right-Hand Drive</source>
-        <translation>启用右舵模式</translation>
-    </message>
-    <message>
-        <location filename="../qt/offroad/settings.cc" line="47"/>
-        <source>Allow openpilot to obey left-hand traffic conventions and perform driver monitoring on right driver seat.</source>
-        <translation>允许openpilot遵守左侧交通惯例并在右侧驾驶座上执行驾驶员监控。</translation>
-    </message>
-    <message>
-        <location filename="../qt/offroad/settings.cc" line="52"/>
         <source>Use Metric System</source>
         <translation>使用公制单位</translation>
     </message>
