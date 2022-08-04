@@ -6,7 +6,7 @@
 
 ```bash
 # Log in via browser to have access to non-public routes
-python lib/auth.py
+python tools/lib/auth.py
 
 # Start a replay
 selfdrive/ui/replay/replay <route-name>
@@ -24,6 +24,7 @@ python replay/ui.py
 ```
 
 ## usage
+
 ``` bash
 $ selfdrive/ui/replay/replay -h
 Usage: selfdrive/ui/replay/replay [options] route
