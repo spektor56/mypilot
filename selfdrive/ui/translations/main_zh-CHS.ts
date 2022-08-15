@@ -1201,8 +1201,8 @@ location set</source>
         <translation>启用后，踩下油门踏板将取消openpilot。</translation>
     </message>
     <message>
-        <location filename="../qt/offroad/settings.cc" line="71"/>
-        <source>Show ETA in 24h format</source>
+        <location filename="../qt/offroad/settings.cc" line="65"/>
+        <source>Show ETA in 24h Format</source>
         <translation>以24小时格式显示预计到达时间</translation>
     </message>
     <message>

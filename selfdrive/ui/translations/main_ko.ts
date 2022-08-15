@@ -1203,8 +1203,8 @@ location set</source>
         <translation>활성화된 경우 가속 페달을 누르면 openpilot이 해제됩니다.</translation>
     </message>
     <message>
-        <location filename="../qt/offroad/settings.cc" line="71"/>
-        <source>Show ETA in 24h format</source>
+        <location filename="../qt/offroad/settings.cc" line="65"/>
+        <source>Show ETA in 24h Format</source>
         <translation>24시간 형식으로 도착예정시간 표시</translation>
     </message>
     <message>
