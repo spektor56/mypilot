@@ -175,7 +175,7 @@ if __name__ == "__main__":
       ]
       tolerance = None if not PC else 1e-3
       results: Any = {TEST_ROUTE: {}}
-      log_paths: Any = {TEST_ROUTE: {'ref': BASE_URL + log_fn, 'new': log_fn}}
+      log_paths: Any = {TEST_ROUTE: {"models": {'ref': BASE_URL + log_fn, 'new': log_fn}}}
       results[TEST_ROUTE]["models"] = compare_logs(cmp_log, log_msgs, tolerance=tolerance, ignore_fields=ignore)
       diff1, diff2, failed = format_diff(results, log_paths, ref_commit)
 
