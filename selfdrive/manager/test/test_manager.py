@@ -8,7 +8,6 @@ import selfdrive.manager.manager as manager
 from system.hardware import EON, TICI, HARDWARE
 from selfdrive.manager.process import DaemonProcess
 from selfdrive.manager.process_config import managed_processes
-from system.hardware import AGNOS, HARDWARE
 
 os.environ['FAKEUPLOAD'] = "1"
 
