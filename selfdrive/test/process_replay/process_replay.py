@@ -302,18 +302,6 @@ CONFIGS = [
     fake_pubsubmaster=True,
   ),
   ProcessConfig(
-    proc_name="dmonitoringd",
-    pub_sub={
-      "driverState": ["driverMonitoringState"],
-      "liveCalibration": [], "carState": [], "modelV2": [], "controlsState": [],
-    },
-    ignore=["logMonoTime", "valid"],
-    init_callback=get_car_params,
-    should_recv_callback=None,
-    tolerance=NUMPY_TOLERANCE,
-    fake_pubsubmaster=True,
-  ),
-  ProcessConfig(
     proc_name="locationd",
     pub_sub={
       "cameraOdometry": ["liveLocationKalman"],
