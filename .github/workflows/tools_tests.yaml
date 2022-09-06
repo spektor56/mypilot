@@ -1,7 +1,6 @@
 name: tools
 on:
-  push:
-  pull_request:
+  workflow_dispatch:
 
 env:
   BASE_IMAGE: openpilot-base
@@ -29,6 +28,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         submodules: true
+        token: ${{ secrets.PAT }}
     - name: Cache pyenv
       id: ubuntu-latest-pyenv
       uses: actions/cache@v3
@@ -69,6 +69,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         submodules: true
+        token: ${{ secrets.PAT }}
     - name: Build Docker image
       run: eval "$BUILD"
     - name: Unit test
@@ -90,6 +91,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         submodules: true
+        token: ${{ secrets.PAT }}
     - name: Pull LFS
       run: git lfs pull
     - name: Build base image
